@@ -32,7 +32,6 @@ import com.dvsuperior.dscatalog.services.exceptions.ResourceNotFoundException;
 @Service
 public class UserService implements UserDetailsService {
 	
-	//interface/metodo que imprime mensagens no console
 	private static Logger logger = LoggerFactory.getLogger(UserService.class);
 	
 	@Autowired
