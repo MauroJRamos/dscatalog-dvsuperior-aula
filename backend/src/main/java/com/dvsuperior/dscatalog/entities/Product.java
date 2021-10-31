@@ -17,28 +17,27 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name= "tb_product")
-public class Product implements Serializable{
+@Table(name = "tb_product")
+public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long id;
-	public String name;
+	private Long id;
+	private String name;
 	
 	@Column(columnDefinition = "TEXT")
-	public String description;
-	public Double price;
-	public String imgUrl;
+	private String description;
+	private Double price;
+	private String imgUrl;
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	public Instant date;
+	private Instant date;
 	
 	@ManyToMany
 	@JoinTable(name = "tb_product_category",
-	     joinColumns = @JoinColumn(name = "product_id"),
-	     inverseJoinColumns = @JoinColumn(name = "category_id"))
+		joinColumns = @JoinColumn(name = "product_id"),
+		inverseJoinColumns = @JoinColumn(name = "category_id"))	
 	Set<Category> categories = new HashSet<>();
 	
 	public Product() {
@@ -128,12 +127,5 @@ public class Product implements Serializable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
-	
-	
-	
-	
-	
-
+	}	
 }
