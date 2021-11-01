@@ -31,9 +31,12 @@ public class ProductResource {
 	public ProductService service;
 	
 	@GetMapping
-	public ResponseEntity<Page<ProductDTO>> findAll(@RequestParam(value = "categoryId", defaultValue = "0")Long categoryId,Pageable pageable){
+	public ResponseEntity<Page<ProductDTO>> findAll(
+		@RequestParam(value = "categoryId", defaultValue = "0")Long categoryId,
+		@RequestParam(value = "name", defaultValue = "")String name,
+		Pageable pageable){
 		//PARAMETROS: page, size, sort	
-		Page<ProductDTO> list = service.findAllPaged(categoryId, pageable); 
+		Page<ProductDTO> list = service.findAllPaged(categoryId,name.trim(), pageable); //trim() função que tira os espaços em branco da string
 		return ResponseEntity.ok().body(list);
 		
 	}
