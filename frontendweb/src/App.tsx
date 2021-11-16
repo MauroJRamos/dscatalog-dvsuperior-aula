@@ -1,11 +1,14 @@
-
+import Navbar from 'components/Navbar';
 import './assets/styles/custom.scss';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <h1>App Dscatalog</h1>
+    <>
+      <Navbar />
+      <h1>Home Dscatalog</h1>
+    </>
   );
-}
+};
 
 export default App;
