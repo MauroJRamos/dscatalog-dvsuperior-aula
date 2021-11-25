@@ -12,6 +12,7 @@ const Navbar = () => {
         <Link to="/" className="nav-logo-text">
           <h4>DS Catalog</h4>
         </Link>
+        {/* Buton do menu hamburger */}
         <button
           className="navbar-toggler"
           type="button"
