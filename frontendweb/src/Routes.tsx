@@ -8,6 +8,7 @@ import Auth from 'pages/Admin/Auth';
 import history from 'util/history';
 
 const Routes = () => (
+  //com o history é possivel executar  rederecionameto de rotas
   <Router history={history}>
     <Navbar />
     <Switch>

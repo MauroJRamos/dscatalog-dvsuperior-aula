@@ -1,6 +1,15 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import qs from 'qs';
 import history from './history';
+import jwtDecode from 'jwt-decode';
+
+type Role = 'ROLE_OPERATOR' | 'ROLE_ADMIN';
+
+type TokenData = {
+  exp: number;
+  user_name: string;
+  authorities: Role[];
+};
 
 type LoginResponse = {
   access_token: string;
@@ -51,7 +60,7 @@ export const requestBackend = (config: AxiosRequestConfig) => {
         Authorization: 'Bearer' + getAuthData().access_token,
       }
     : config.headers;
-  return axios({ ...config, baseURL: BASE_URL, headers});
+  return axios({ ...config, baseURL: BASE_URL, headers });
 };
 
 export const saveAuthData = (obj: LoginResponse) => {
@@ -64,24 +73,42 @@ export const getAuthData = () => {
 };
 
 // Add a request interceptor
-axios.interceptors.request.use(function (config) {
- //
-  return config;
-}, function (error) {
- // 
-  return Promise.reject(error);
-});
+axios.interceptors.request.use(
+  function (config) {
+    //
+    return config;
+  },
+  function (error) {
+    //
+    return Promise.reject(error);
+  }
+);
 
 // Add a response interceptor
-axios.interceptors.response.use(function (response) {
-  console.log('INTERCEPTOR RESPOSTA COM SUCESSO');
-  return response;
-}, function (error) {
-if(error.response.status === 401 || error.response.status === 403){
-history.push('/admin/auth');
+axios.interceptors.response.use(
+  function (response) {
+    console.log('INTERCEPTOR RESPOSTA COM SUCESSO');
+    return response;
+  },
+  function (error) {
+    if (error.response.status === 401 || error.response.status === 403) {
+      history.push('/admin/auth');
+    }
+
+    console.log('INTERCEPTOR RESPOSTA COM ERRO');
+    return Promise.reject(error);
+  }
+);
+
+export const getTokenData = (): TokenData | undefined => {
+  try {
+    return jwtDecode(getAuthData().access_token) as TokenData;
+  } catch (error) {
+    return undefined;
+  }
+};
+
+export const  isAutenthicated = () : Boolean => {
+  const tokenData = getTokenData();
+  return (tokenData && tokenData.exp * 1000 > Date.now()) ? true : false;
 }
-
-   console.log('INTERCEPTOR RESPOSTA COM ERRO');
-  return Promise.reject(error);
-});
-
