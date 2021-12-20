@@ -1,7 +1,7 @@
 import { ReactComponent as MainImage } from 'assets/images/main-image.svg';
 import ButtonIcon from 'components/ButtonIcon';
 import { Link } from 'react-router-dom';
-import { getTokenData, isAutenthicated } from 'util/requests';
+import { getTokenData, isAuthenticated } from 'util/requests';
 
 import './styles.css';
 
@@ -10,7 +10,7 @@ const Home = () => {
     <div className="home-container">
       <h4>Usuario: {getTokenData()?.user_name}</h4>
       <h4>Permissão: {getTokenData()?.authorities}</h4>
-      <h4>{isAutenthicated()? 'autenticado' : 'Não autenticado'} </h4>
+      <h4>{isAuthenticated()? 'autenticado' : 'Não autenticado'} </h4>
       <div className="base-card home-card">
         <div className="home-content-container">
           <div>
