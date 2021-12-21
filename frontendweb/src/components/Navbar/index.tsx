@@ -75,10 +75,10 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div>
+        <div className="nav-login-logout">
           {authData.authenticated ? (
             <>
-            <span>{getTokenData()?.user_name}</span>
+            <span className="nav-username">{getTokenData()?.user_name}</span>
             <a href="#Logout" onClick={handleLogoutClick}>LOGOUT</a>
             </>
           ) : (
