@@ -2,39 +2,40 @@ import './styles.css';
 import 'bootstrap/js/src/collapse.js';
 
 import { Link, NavLink } from 'react-router-dom';
-import { getTokenData, isAuthenticated, removeAuthData, TokenData } from 'util/requests';
-import { useEffect, useState } from 'react';
-import history from 'util/history';
+import {
+  getTokenData,
+  isAuthenticated,
+  removeAuthData,
 
-type AuthData = {
-  authenticated: boolean;
-  tokenData?: TokenData;
-};
+} from 'util/requests';
+import { useContext, useEffect} from 'react';
+import history from 'util/history';
+import { AuthContext } from 'AuthContext';
 
 const Navbar = () => {
-  const [authData, setAuthData] = useState<AuthData>({ authenticated: false });
+  const { authContextData, setAuthContextData } = useContext(AuthContext);
 
   useEffect(() => {
     if (isAuthenticated()) {
-      setAuthData({
+      setAuthContextData({
         authenticated: true,
-        tokenData: getTokenData()
+        tokenData: getTokenData(),
       });
     } else {
-      setAuthData({
+      setAuthContextData({
         authenticated: false,
       });
     }
-  }, []);
+  }, [setAuthContextData]);
 
   const handleLogoutClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-      event.preventDefault();
-      removeAuthData()
-      setAuthData({
-        authenticated: false,
-      });
-      history.replace('/');
-  }
+    event.preventDefault();
+    removeAuthData();
+    setAuthContextData({
+      authenticated: false,
+    });
+    history.replace('/');
+  };
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-primary main-nav">
@@ -76,15 +77,17 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="nav-login-logout">
-          {authData.authenticated ? (
+          {authContextData.authenticated ? (
             <>
-            <span className="nav-username">{getTokenData()?.user_name}</span>
-            <a href="#Logout" onClick={handleLogoutClick}>LOGOUT</a>
+              <span className="nav-username">{authContextData.tokenData?.user_name}</span>
+              <a href="#Logout" onClick={handleLogoutClick}>
+                LOGOUT
+              </a>
             </>
           ) : (
             <Link to="/admin/auth">LOGIN</Link>
           )}
-        </div>
+        </div> 
       </div>
     </nav>
   );
