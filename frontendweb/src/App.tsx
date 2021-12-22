@@ -11,6 +11,7 @@ function App() {
   });
 
   return (
+    //O provider vai prover o contexto global.
     <AuthContext.Provider value={{ authContextData, setAuthContextData }}> 
       <Routes />
     </AuthContext.Provider>

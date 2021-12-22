@@ -1,10 +1,12 @@
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import ButtonIcon from 'components/ButtonIcon';
 import { useForm } from 'react-hook-form';
 import { getTokenData, requestBackendLogin, saveAuthData } from 'util/requests';
 import { useContext, useState } from 'react';
 import { AuthContext } from 'AuthContext';
+
 import './styles.css';
+
 
 
 type FormData = {
@@ -12,7 +14,15 @@ type FormData = {
   password: string;
 };
 
+type LocationState =  {
+  from: string;
+}
+
 const Login = () => {
+
+  const location = useLocation<LocationState>();
+
+  const { from }   = location.state || {from: {pathname: '/admin' } };
 
   const { setAuthContextData } = useContext(AuthContext);
 
@@ -35,7 +45,8 @@ const Login = () => {
           authenticated: true,
           tokenData: getTokenData(),
         })
-        history.push('/Admin');
+        //O relace faz retornar para a pagina anterior
+        history.replace(from);
       })
       .catch((error) => {
         setHasError(true);

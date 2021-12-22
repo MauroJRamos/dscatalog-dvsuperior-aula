@@ -13,6 +13,7 @@ import history from 'util/history';
 import { AuthContext } from 'AuthContext';
 
 const Navbar = () => {
+  //Com o useContext o componete navBar poderá monitorar o estado global do tipo AuthContext
   const { authContextData, setAuthContextData } = useContext(AuthContext);
 
   useEffect(() => {
