@@ -3,12 +3,14 @@ import ProductPrice from 'components/ProductPrice';
 import { Link, useParams } from 'react-router-dom';
 import { Product } from 'types/products';
 import { BASE_URL } from 'util/requests';
-
-import './styles.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ProductDetailsLoader from './ProductDetailsLoader';
 import ProductInfoLoader from './ProductInfoLoader';
+
+
+import './styles.css';
+
 
 type UrlParams = {
   productId: string;
@@ -64,6 +66,7 @@ const ProductDetils = () => {
               <div className="description-container">
                 <h1>Descrição do produto</h1>
                 <p>{product?.description}</p>
+                <p>categoria</p>
               </div>
             )}
           </div>
