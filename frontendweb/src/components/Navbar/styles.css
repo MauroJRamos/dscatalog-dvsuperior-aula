@@ -40,19 +40,17 @@
   display: none;
 }
 
-@media (min-width: 768px){
-  .nav-login-logout{
+@media (min-width: 768px) {
+  .nav-login-logout {
     display: unset;
     color: #fff;
     margin-right: 15px;
-
   }
 }
 
-@media (min-width: 992px){
-  .nav-login-logout{
+@media (min-width: 992px) {
+  .nav-login-logout {
     margin-right: 40px;
-
   }
 
   .nav-username {

@@ -2,15 +2,15 @@ import './styles.css';
 import 'bootstrap/js/src/collapse.js';
 
 import { Link, NavLink } from 'react-router-dom';
-
-import { useContext, useEffect} from 'react';
+import { useEffect } from 'react';
 import history from 'util/history';
+import { useContext } from 'react';
 import { AuthContext } from 'AuthContext';
 import { getTokenData, isAuthenticated } from 'util/auth';
 import { removeAuthData } from 'util/storage';
 
 const Navbar = () => {
-  //Com o useContext o componete navBar poderá monitorar o estado global do tipo AuthContext
+
   const { authContextData, setAuthContextData } = useContext(AuthContext);
 
   useEffect(() => {
@@ -38,12 +38,9 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-primary main-nav">
       <div className="container-fluid">
-        {' '}
-        {/* previne quebra de linha entre logo e itens */}
         <Link to="/" className="nav-logo-text">
           <h4>DS Catalog</h4>
         </Link>
-        {/* Buton do menu hamburger */}
         <button
           className="navbar-toggler"
           type="button"
@@ -74,18 +71,19 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
+
         <div className="nav-login-logout">
           {authContextData.authenticated ? (
             <>
               <span className="nav-username">{authContextData.tokenData?.user_name}</span>
-              <a href="#Logout" onClick={handleLogoutClick}>
+              <a href="#logout" onClick={handleLogoutClick}>
                 LOGOUT
               </a>
             </>
           ) : (
             <Link to="/admin/auth">LOGIN</Link>
           )}
-        </div> 
+        </div>
       </div>
     </nav>
   );

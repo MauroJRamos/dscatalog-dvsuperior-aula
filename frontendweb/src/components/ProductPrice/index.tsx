@@ -1,11 +1,11 @@
 import { formatPrice } from 'util/formatters';
 import './styles.css';
 
-type props = {
-    price:number;
+type Props = {
+    price: number;
 }
 
-const ProductPrice = ({price}: props) => {
+const ProductPrice = ( { price } : Props) => {
 
     return (
         <div className="product-price-container">

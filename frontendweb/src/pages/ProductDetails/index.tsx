@@ -1,42 +1,40 @@
 import { ReactComponent as ArrowIcon } from 'assets/images/arrow.svg';
-import ProductPrice from 'components/ProductPrice';
-import { Link, useParams } from 'react-router-dom';
-import { Product } from 'types/products';
-import { BASE_URL } from 'util/requests';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
-import ProductDetailsLoader from './ProductDetailsLoader';
+import ProductPrice from 'components/ProductPrice';
+import { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { Product } from 'types/product';
+import { BASE_URL } from 'util/requests';
 import ProductInfoLoader from './ProductInfoLoader';
-
+import ProductDetailsLoader from './ProductDetailsLoader';
 
 import './styles.css';
-
 
 type UrlParams = {
   productId: string;
 };
 
-const ProductDetils = () => {
+const ProductDetails = () => {
   const { productId } = useParams<UrlParams>();
-  const [isLoading, setLoading] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(false);
   const [product, setProduct] = useState<Product>();
 
   useEffect(() => {
-    setLoading(true);
+    setIsLoading(true);
     axios
       .get(`${BASE_URL}/products/${productId}`)
-      .then((Response) => {
-        setProduct(Response.data);
+      .then((response) => {
+        setProduct(response.data);
       })
       .finally(() => {
-        setLoading(false);
+        setIsLoading(false);
       });
   }, [productId]);
 
   return (
-    <div className=" product-details-container">
-      <div className="base-card product-dateils-card">
+    <div className="product-details-container">
+      <div className="base-card product-details-card">
         <Link to="/products">
           <div className="goback-container">
             <ArrowIcon />
@@ -64,9 +62,8 @@ const ProductDetils = () => {
               <ProductDetailsLoader />
             ) : (
               <div className="description-container">
-                <h1>Descrição do produto</h1>
+                <h2>Descrição do produto</h2>
                 <p>{product?.description}</p>
-                <p>categoria</p>
               </div>
             )}
           </div>
@@ -75,4 +72,5 @@ const ProductDetils = () => {
     </div>
   );
 };
-export default ProductDetils;
+
+export default ProductDetails;

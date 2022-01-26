@@ -1,5 +1,5 @@
-import jwtDecode from "jwt-decode";
-import { getAuthData } from "./storage";
+import jwtDecode from 'jwt-decode';
+import { getAuthData } from './storage';
 
 export type Role = 'ROLE_OPERATOR' | 'ROLE_ADMIN';
 
@@ -17,8 +17,8 @@ export const getTokenData = (): TokenData | undefined => {
   }
 };
 
-export const isAuthenticated = (): Boolean => {
-  const tokenData = getTokenData();
+export const isAuthenticated = (): boolean => {
+  let tokenData = getTokenData();
   return tokenData && tokenData.exp * 1000 > Date.now() ? true : false;
 };
 
@@ -30,14 +30,12 @@ export const hasAnyRoles = (roles: Role[]): boolean => {
   const tokenData = getTokenData();
 
   if (tokenData !== undefined) {
-    //Forma alternativa para a verificação das roles
-    //for (var i = 0; i < roles.length; i++) {
-    // if (tokenData.authorities.includes(roles[i])) {
-    //    return true;
-    //  }
-    //}
-
-    return roles.some((role) => tokenData.authorities.includes(role));
+    for (var i = 0; i < roles.length; i++) {
+      if (tokenData.authorities.includes(roles[i])) {
+        return true;
+      }
+    }
+    //return roles.some(role => tokenData.authorities.includes(role));
   }
 
   return false;

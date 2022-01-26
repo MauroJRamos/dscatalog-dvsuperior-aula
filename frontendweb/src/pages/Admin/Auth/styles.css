@@ -2,17 +2,14 @@
   display: flex;
   justify-content: space-around;
   padding: 20px;
- 
 }
 
 .auth-banner-container {
   display: none;
- 
 }
 
 .auth-form-container {
   width: 100%;
- 
 }
 
 @media (min-width: 576px) {
@@ -40,9 +37,9 @@
   }
 
   .auth-banner-container h1 {
+    font-size: 40px;
     letter-spacing: -0.015em;
     color: #263238;
-    font-size: 40px;
     margin-bottom: 15px;
   }
   .auth-banner-container p {
@@ -52,8 +49,7 @@
   }
 
   .auth-banner-container svg {
-    width: 90%;
-    
+    width: 100%;
   }
 }
 
@@ -66,6 +62,7 @@
     font-size: 55px;
     margin-bottom: 25px;
   }
+
   .auth-banner-container p {
     font-size: 24px;
   }

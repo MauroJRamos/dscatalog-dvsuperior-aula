@@ -38,9 +38,10 @@ export const requestBackend = (config: AxiosRequestConfig) => {
   const headers = config.withCredentials
     ? {
         ...config.headers,
-        Authorization: 'Bearer' + getAuthData().access_token,
+        Authorization: 'Bearer ' + getAuthData().access_token,
       }
     : config.headers;
+
   return axios({ ...config, baseURL: BASE_URL, headers });
 };
 
@@ -59,15 +60,13 @@ axios.interceptors.request.use(
 // Add a response interceptor
 axios.interceptors.response.use(
   function (response) {
-    console.log('INTERCEPTOR RESPOSTA COM SUCESSO');
+    //
     return response;
   },
   function (error) {
     if (error.response.status === 401) {
       history.push('/admin/auth');
     }
-
-    console.log('INTERCEPTOR RESPOSTA COM ERRO');
     return Promise.reject(error);
   }
 );

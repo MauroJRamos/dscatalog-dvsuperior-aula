@@ -2,12 +2,11 @@ import './styles.css';
 
 import { ReactComponent as ArrowIcon } from 'assets/images/arrow.svg';
 
-
-type props  = {
- text: string;
+type Props = {
+  text: string;
 }
 
-const ButtonIcon = ({text} : props) => {
+const ButtonIcon = ({ text } : Props) => {
   return (
     <div className="btn-container">
       <button className="btn btn-primary">
