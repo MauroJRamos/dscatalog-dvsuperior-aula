@@ -52,7 +52,7 @@ const ProductCrudCard = ({ product, onDelete }: Props) => {
           onClick={() => handleDelete(product.id)}
           className="btn btn-outline-danger product-crud-card-button product-crud-card-button-first"
         >
-          EXCLUIR
+            EXCLUIR
         </button>
         <Link to={`/admin/products/${product.id}`}>
           <button className="btn btn-outline-secondary product-crud-card-button">

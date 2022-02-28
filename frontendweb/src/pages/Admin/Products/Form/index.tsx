@@ -54,6 +54,8 @@ const Form = () => {
   }, [isEditing, productId, setValue]);
 
   const onSubmit = (formData: Product) => {
+   
+    //função que converte virgula ',' para ponto '.'
     const data = {
       ...formData,
       price: String(formData.price).replace(',', '.'),
@@ -106,6 +108,7 @@ const Form = () => {
               </div>
 
               <div className="margin-bottom-30 ">
+                
                 <Controller
                   name="categories"
                   rules={{ required: true }}
