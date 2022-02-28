@@ -1,3 +1,4 @@
-# dscatalog-dvsuperior-aula
 
+# DSCatalog
 # Projeto Desenvolvido no Bootcamp Spring React
+
