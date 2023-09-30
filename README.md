@@ -49,6 +49,14 @@
 #### Figma do DSCatalog
 https://www.figma.com/file/1n0aifcfatWv9ozp16XCrq/DSCatalog-Bootcamp
 
+#### Telas:
+
+![image](https://github.com/MauroJRamos/dscatalog-dvsuperior-aula/assets/82981926/31cf50b8-114b-4f68-8487-25e9461183b5)
+
+![image](https://github.com/MauroJRamos/dscatalog-dvsuperior-aula/assets/82981926/2aa61da5-3f58-4136-9cce-113d6fb4b451)
+
+
+
 
 
 
