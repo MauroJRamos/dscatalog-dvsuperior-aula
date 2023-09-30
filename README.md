@@ -22,9 +22,7 @@ https://www.figma.com/file/1n0aifcfatWv9ozp16XCrq/DSCatalog-Bootcamp
 * Estruturar o back end no padrão camadas
 * CRUD
 * Consultas agrupadas, listas e filtros
-* Implantação na nuvem
-
-#### Projeto no Heroku
+* Implantação na nuvem (Projeto no Heroku)
 
 # Modelo conceitual do DSCatalog
 
