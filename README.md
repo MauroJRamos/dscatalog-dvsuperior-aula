@@ -2,8 +2,6 @@
 # DSCatalog
 #### Projeto Desenvolvido no Bootcamp Spring React, da escola DevSuperior
 
-# Figma do DSCatalog
-https://www.figma.com/file/1n0aifcfatWv9ozp16XCrq/DSCatalog-Bootcamp
 
 # Backend
 ### No backend foi utilizado o Java com Spring Boot para criar uma Rest/API.
@@ -48,6 +46,8 @@ https://www.figma.com/file/1n0aifcfatWv9ozp16XCrq/DSCatalog-Bootcamp
 * Filtragem de dados
 * Controle de referência com hook useCallback
 
+#### Figma do DSCatalog
+https://www.figma.com/file/1n0aifcfatWv9ozp16XCrq/DSCatalog-Bootcamp
 
 
 
